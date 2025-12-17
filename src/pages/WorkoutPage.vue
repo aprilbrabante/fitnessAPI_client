@@ -26,12 +26,14 @@
         </div>
 
         <div class="row g-4">
-            <WorkoutComponent
-                v-for="(workout, index) in paginatedWorkouts"
-                :key="index"
-                :workoutData="workout"
-                class="col-12 col-md-6 col-lg-4"
-            /> 
+          <WorkoutComponent
+            v-for="workout in paginatedWorkouts"
+            :key="workout._id"               
+            :workoutData="workout"
+            class="col-12 col-md-6 col-lg-4"
+            @deleted="removeWorkout"
+            @updated="updateWorkoutStatus"
+          />
         </div>
         <br/><br/>
         <div class="container">
@@ -118,5 +120,15 @@
 
     }
 
+    function removeWorkout(workoutId) {
+      workouts.data = workouts.data.filter(w => w._id !== workoutId);
+    }
 
+  function updateWorkoutStatus(workoutId) {
+    // Find the workout and update its status to 'completed'
+    const workout = workouts.data.find(w => w._id === workoutId);
+    if (workout) {
+      workout.status = 'completed';
+    }
+  }
 </script>

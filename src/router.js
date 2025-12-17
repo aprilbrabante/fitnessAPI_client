@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage.vue';
 import WorkoutPage from './pages/WorkoutPage.vue';
 import AddWorkoutPage from './pages/AddWorkoutPage.vue';
 import LogoutPage from './pages/LogoutPage.vue';
+import UpdateWorkoutPage from './pages/UpdateWorkoutPage.vue';
 
   const router = createRouter({
     history: createWebHistory(),
@@ -38,6 +39,11 @@ import LogoutPage from './pages/LogoutPage.vue';
             path: '/register-workout',
             name: 'RegisterWorkout',
             component: AddWorkoutPage
+        },
+        {
+            path: '/edit-workout',
+            name: 'EditWorkout',
+            component: UpdateWorkoutPage
         },
         {
             path: '/logout',
